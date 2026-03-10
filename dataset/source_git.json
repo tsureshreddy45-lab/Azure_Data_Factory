@@ -1,0 +1,23 @@
+{
+	"name": "source_git",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "linkedgit",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation",
+				"relativeUrl": "tsureshreddy45-lab/Azure_Data_Factory/refs/heads/main/Raw_Data/Sales.csv"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

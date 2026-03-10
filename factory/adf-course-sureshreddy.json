@@ -1,0 +1,9 @@
+{
+	"name": "adf-course-sureshreddy",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "a95d8e05-03e4-44ee-8ee8-b73090f79c99",
+		"tenantId": "ce98d945-3589-41c8-a0a2-564e188ee22a"
+	}
+}
