@@ -1,0 +1,24 @@
+{
+	"name": "Mantrigger",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "pipelinemanager",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/source/blobs/csvfiles/Sales.csv",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/52bb85f7-5489-4959-ac70-5d6134f5359b/resourceGroups/rg_azure/providers/Microsoft.Storage/storageAccounts/datalakesuresh",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}
