@@ -61,7 +61,7 @@
 				]
 			},
 			{
-				"name": "DeleteFile",
+				"name": "DeleteCSV",
 				"type": "Delete",
 				"dependsOn": [
 					{
