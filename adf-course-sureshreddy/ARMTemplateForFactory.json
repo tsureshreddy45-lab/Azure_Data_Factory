@@ -19,7 +19,7 @@
 			"type": "string",
 			"defaultValue": "https://datalakesuresh.dfs.core.windows.net/"
 		},
-		"manageTrigger_properties_typeProperties_scope": {
+		"Mantrigger_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/52bb85f7-5489-4959-ac70-5d6134f5359b/resourceGroups/rg_azure/providers/Microsoft.Storage/storageAccounts/datalakesuresh"
 		}
@@ -442,7 +442,7 @@
 						]
 					},
 					{
-						"name": "Delete1",
+						"name": "DeleteFile",
 						"type": "Delete",
 						"dependsOn": [
 							{
@@ -461,7 +461,17 @@
 						},
 						"userProperties": [],
 						"typeProperties": {
-							"enableLogging": true
+							"dataset": {
+								"referenceName": "source_csv",
+								"type": "DatasetReference",
+								"parameters": {}
+							},
+							"enableLogging": false,
+							"storeSettings": {
+								"type": "AzureBlobFSReadSettings",
+								"recursive": true,
+								"enablePartitionDiscovery": false
+							}
 						}
 					}
 				],
@@ -892,6 +902,36 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/Mantrigger')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "pipelinemanager",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
+					}
+				],
+				"type": "BlobEventsTrigger",
+				"typeProperties": {
+					"blobPathBeginsWith": "/source/blobs/csvfiles/Sales.csv",
+					"ignoreEmptyBlobs": true,
+					"scope": "[parameters('Mantrigger_properties_typeProperties_scope')]",
+					"events": [
+						"Microsoft.Storage.BlobCreated"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/pipelinemanager')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/SelectedFileTrigger')]",
 			"type": "Microsoft.DataFactory/factories/triggers",
 			"apiVersion": "2018-06-01",
@@ -920,36 +960,6 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/pipelines/OnlySelectedFile')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/manageTrigger')]",
-			"type": "Microsoft.DataFactory/factories/triggers",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"runtimeState": "Started",
-				"pipelines": [
-					{
-						"pipelineReference": {
-							"referenceName": "pipelinemanager",
-							"type": "PipelineReference"
-						},
-						"parameters": {}
-					}
-				],
-				"type": "BlobEventsTrigger",
-				"typeProperties": {
-					"blobPathBeginsWith": "/source/blobs/'csvfiles/Sales.csv'",
-					"ignoreEmptyBlobs": true,
-					"scope": "[parameters('manageTrigger_properties_typeProperties_scope')]",
-					"events": [
-						"Microsoft.Storage.BlobCreated"
-					]
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/pipelinemanager')]"
 			]
 		},
 		{

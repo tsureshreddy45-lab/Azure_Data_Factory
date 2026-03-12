@@ -7,7 +7,7 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "adf-course-sureshreddy"
 		},
-		"manageTrigger_properties_typeProperties_scope": {
+		"Mantrigger_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/52bb85f7-5489-4959-ac70-5d6134f5359b/resourceGroups/rg_azure/providers/Microsoft.Storage/storageAccounts/datalakesuresh"
 		}
@@ -17,7 +17,7 @@
 	},
 	"resources": [
 		{
-			"name": "[concat(parameters('factoryName'), '/manageTrigger')]",
+			"name": "[concat(parameters('factoryName'), '/Mantrigger')]",
 			"type": "Microsoft.DataFactory/factories/triggers",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -34,9 +34,9 @@
 				],
 				"type": "BlobEventsTrigger",
 				"typeProperties": {
-					"blobPathBeginsWith": "/source/blobs/'csvfiles/Sales.csv'",
+					"blobPathBeginsWith": "/source/blobs/csvfiles/Sales.csv",
 					"ignoreEmptyBlobs": true,
-					"scope": "[parameters('manageTrigger_properties_typeProperties_scope')]",
+					"scope": "[parameters('Mantrigger_properties_typeProperties_scope')]",
 					"events": [
 						"Microsoft.Storage.BlobCreated"
 					]

@@ -19,7 +19,7 @@
 			"type": "string",
 			"defaultValue": "https://datalakesuresh.dfs.core.windows.net/"
 		},
-		"manageTrigger_properties_typeProperties_scope": {
+		"Mantrigger_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/52bb85f7-5489-4959-ac70-5d6134f5359b/resourceGroups/rg_azure/providers/Microsoft.Storage/storageAccounts/datalakesuresh"
 		},
@@ -77,8 +77,8 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
-					"manageTrigger_properties_typeProperties_scope": {
-						"value": "[parameters('manageTrigger_properties_typeProperties_scope')]"
+					"Mantrigger_properties_typeProperties_scope": {
+						"value": "[parameters('Mantrigger_properties_typeProperties_scope')]"
 					}
 				}
 			},
