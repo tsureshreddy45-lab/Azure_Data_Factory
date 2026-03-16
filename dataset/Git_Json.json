@@ -1,0 +1,17 @@
+{
+	"name": "Git_Json",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "HttpGit",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation"
+			}
+		},
+		"schema": {}
+	}
+}
