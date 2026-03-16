@@ -5,17 +5,23 @@
 		"factoryName": {
 			"value": "adf-course-sureshreddy"
 		},
+		"AzureDataLakeService_accountKey": {
+			"value": ""
+		},
 		"linkedserviceDL_accountKey": {
 			"value": ""
+		},
+		"AzureDataLakeService_properties_typeProperties_url": {
+			"value": "https://datalakesuresh.dfs.core.windows.net/"
+		},
+		"HttpGit_properties_typeProperties_url": {
+			"value": "https://raw.githubusercontent.com/"
 		},
 		"linkedgit_properties_typeProperties_url": {
 			"value": "https://raw.githubusercontent.com"
 		},
 		"linkedserviceDL_properties_typeProperties_url": {
 			"value": "https://datalakesuresh.dfs.core.windows.net/"
-		},
-		"Mantrigger_properties_typeProperties_scope": {
-			"value": "/subscriptions/52bb85f7-5489-4959-ac70-5d6134f5359b/resourceGroups/rg_azure/providers/Microsoft.Storage/storageAccounts/datalakesuresh"
 		},
 		"containerUri": {
 			"value": ""

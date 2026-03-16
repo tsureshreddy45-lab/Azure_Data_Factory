@@ -7,9 +7,21 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "adf-course-sureshreddy"
 		},
+		"AzureDataLakeService_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeService'"
+		},
 		"linkedserviceDL_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'linkedserviceDL'"
+		},
+		"AzureDataLakeService_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://datalakesuresh.dfs.core.windows.net/"
+		},
+		"HttpGit_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://raw.githubusercontent.com/"
 		},
 		"linkedgit_properties_typeProperties_url": {
 			"type": "string",
@@ -18,10 +30,6 @@
 		"linkedserviceDL_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://datalakesuresh.dfs.core.windows.net/"
-		},
-		"Mantrigger_properties_typeProperties_scope": {
-			"type": "string",
-			"defaultValue": "/subscriptions/52bb85f7-5489-4959-ac70-5d6134f5359b/resourceGroups/rg_azure/providers/Microsoft.Storage/storageAccounts/datalakesuresh"
 		},
 		"containerUri": {
 			"type": "string",
@@ -50,8 +58,17 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
+					"AzureDataLakeService_accountKey": {
+						"value": "[parameters('AzureDataLakeService_accountKey')]"
+					},
 					"linkedserviceDL_accountKey": {
 						"value": "[parameters('linkedserviceDL_accountKey')]"
+					},
+					"AzureDataLakeService_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeService_properties_typeProperties_url')]"
+					},
+					"HttpGit_properties_typeProperties_url": {
+						"value": "[parameters('HttpGit_properties_typeProperties_url')]"
 					},
 					"linkedgit_properties_typeProperties_url": {
 						"value": "[parameters('linkedgit_properties_typeProperties_url')]"
@@ -62,29 +79,6 @@
 				}
 			},
 			"dependsOn": []
-		},
-		{
-			"name": "adf-course-sureshreddy_ArmTemplate_1",
-			"type": "Microsoft.Resources/deployments",
-			"apiVersion": "2024-03-01",
-			"properties": {
-				"mode": "incremental",
-				"templateLink": {
-					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
-					"contentVersion": "1.0.0.0"
-				},
-				"parameters": {
-					"factoryName": {
-						"value": "[parameters('factoryName')]"
-					},
-					"Mantrigger_properties_typeProperties_scope": {
-						"value": "[parameters('Mantrigger_properties_typeProperties_scope')]"
-					}
-				}
-			},
-			"dependsOn": [
-				"[resourceId('Microsoft.Resources/deployments', 'adf-course-sureshreddy_ArmTemplate_0')]"
-			]
 		}
 	]
 }
